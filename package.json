@@ -15,8 +15,8 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha -r ts-node/register test/*.ts",
     "build": "./node_modules/.bin/tsc",
-    "release": "np",
-    "toc": "hapitoc",
+    "release": "./node_modules/.bin/np",
+    "toc": "./node_modules/.bin/hapitoc",
     "prepublish": "npm run build"
   },
   "keywords": [

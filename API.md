@@ -1,10 +1,10 @@
 <!-- version -->
-# 1.1.3 API Reference
+# 1.0.0 API Reference
 <!-- versionstop -->
 
 <!-- toc -->
 
-- [1.1.3 API Reference](#113-api-reference)
+- [1.0.0 API Reference](#100-api-reference)
   - [BigNumber](#bignumber)
     - [`bignumber` - inherits from `Any`](#bignumber---inherits-from-any)
       - [`bignumber.min(limit)`](#bignumberminlimit)

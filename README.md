@@ -36,7 +36,7 @@ const schema = Joi.bignumber().positive().integer().min(10).less(100);
 ```
 
 ## API
-See the [API Reference](https://github.com/heat-js/joi-bigjs-extension/blob/v1.1.3/API.md).
+See the [API Reference](/blob/v1.0.0/API.md).
 
 ## Development
 
