@@ -81,10 +81,10 @@ const schema = Joi.bignumber().integer();
 
 Specifies the maximum number of digits where:
 - `limit` - the maximum number of digits allowed.
-- `rounding` - bignumber rounding mode to use (by default 4).
+- `rounding` - bignumber rounding mode to use (by default 1).
 
 ```js
-const schema = Joi.bignumber().precision(2, 4);
+const schema = Joi.bignumber().precision(2, 1);
 ```
 
 💥 Possible validation errors:[`bignumber.nan`](#bignumbernan)
