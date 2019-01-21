@@ -2,7 +2,7 @@ import {expect} from 'chai';
 
 import * as BaseJoi from 'joi';
 import BigNumber from 'big.js';
-import {BigNumberExtension} from '../src/index';
+import BigNumberExtension from '../src/index';
 
 describe('big', () => {
     const Joi = BaseJoi.extend(BigNumberExtension);
