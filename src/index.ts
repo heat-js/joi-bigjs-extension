@@ -1,7 +1,7 @@
 import * as Joi from 'joi';
 import BigNumber from 'big.js';
 
-const BigNumberExtension: Joi.Extension = {
+export const BigNumberExtension: Joi.Extension = {
     name: 'bignumber',
 
     language: {
