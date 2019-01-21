@@ -39,10 +39,10 @@ const schema = Joi.bignumber().positive().integer().min(10).less(100);
 ```
 
 ## API
-See the [API Reference](https://github.com/xtruder/joi-bignumber-extension/blob/v1.1.3/API.md).
+See the [API Reference](https://github.com/heat-js/joi-bignumber-extension/blob/v1.1.3/API.md).
 
 ## Development
- 
+
 ### Install dependencies
 
 ```

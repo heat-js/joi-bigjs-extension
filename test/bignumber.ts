@@ -1,10 +1,10 @@
 import {expect} from 'chai';
 
 import * as BaseJoi from 'joi';
-import {BigNumber} from 'bignumber.js';
+import BigNumber from 'big.js';
 import {BigNumberExtension} from '../src/index';
 
-describe('bignumber', () => {
+describe('big', () => {
     const Joi = BaseJoi.extend(BigNumberExtension);
 
     it('should extend joi', () => {
@@ -167,7 +167,7 @@ describe('bignumber', () => {
         });
 
         it('should round to a precision with rounding mode', () => {
-            const bnValidator = Joi.bignumber().precision(5, BigNumber.ROUND_UP);
+            const bnValidator = Joi.bignumber().precision(5, 3);
 
             const result = bnValidator.validate('100.111');
 

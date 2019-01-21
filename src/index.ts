@@ -1,5 +1,5 @@
 import * as Joi from 'joi';
-import {BigNumber} from 'bignumber.js'
+import BigNumber from 'big.js';
 
 export const BigNumberExtension: Joi.Extension = {
     name: 'bignumber',
@@ -23,14 +23,22 @@ export const BigNumberExtension: Joi.Extension = {
             return value;
         }
 
-        let bnValue = new BigNumber(value);
-        
-        if (bnValue.isNaN()) {
+        try {
+            var bnValue = new BigNumber(value);
+        } catch (error) {
             return this.createError('bignumber.nan', { v: value }, state, options);
         }
 
         if (_this._flags.precision) {
-            bnValue = new BigNumber(bnValue.toPrecision(_this._flags.precision, _this._flags.rounding));
+            const oldRounding = BigNumber.RM;
+
+            if (_this._flags.rounding) {
+                BigNumber.RM = _this._flags.rounding;
+            }
+
+            bnValue = new BigNumber(bnValue.toPrecision(_this._flags.precision));
+
+            BigNumber.RM = oldRounding;
         }
 
         return options.convert ? bnValue : value;
@@ -45,9 +53,9 @@ export const BigNumberExtension: Joi.Extension = {
             },
             validate(params, value: BigNumber, state, options) {
                 const min = new BigNumber(params.value)
-                
+
                 // check whether number value is less then minimal value
-                if (!new BigNumber(value).isGreaterThanOrEqualTo(min)) {
+                if (!new BigNumber(value).gte(min)) {
                     return this.createError('bignumber.min', {v: value, min}, state, options);
                 }
 
@@ -65,7 +73,7 @@ export const BigNumberExtension: Joi.Extension = {
                 const max = new BigNumber(params.value);
 
                 // check whether number value is greater then maximal value
-                if (!new BigNumber(value).isLessThanOrEqualTo(max)) {
+                if (!new BigNumber(value).lte(max)) {
                     return this.createError('bignumber.max', {v: value, max}, state, options);
                 }
 
@@ -81,9 +89,9 @@ export const BigNumberExtension: Joi.Extension = {
             },
             validate(params, value: BigNumber, state, options) {
                 const min = new BigNumber(params.value)
-                
+
                 // check whether number value is less then minimal value
-                if (!new BigNumber(value).isGreaterThan(min)) {
+                if (!new BigNumber(value).gt(min)) {
                     return this.createError('bignumber.greater', {v: value, min}, state, options);
                 }
 
@@ -101,7 +109,7 @@ export const BigNumberExtension: Joi.Extension = {
                 const max = new BigNumber(params.value);
 
                 // check whether number value is greater then maximal value
-                if (!new BigNumber(value).isLessThan(max)) {
+                if (!new BigNumber(value).lt(max)) {
                     return this.createError('bignumber.less', {v: value, max}, state, options);
                 }
 
@@ -114,7 +122,7 @@ export const BigNumberExtension: Joi.Extension = {
             description: 'Integer value',
             validate(params, value: BigNumber, state, options) {
                 // check whether number value is integer
-                if (!new BigNumber(value).isInteger()) {
+                if (-1 < new BigNumber(value).toFixed().indexOf('.')) {
                     return this.createError('bignumber.integer', {v: value}, state, options);
                 }
 
@@ -127,7 +135,7 @@ export const BigNumberExtension: Joi.Extension = {
             description: 'Value precision',
             params: {
                 value: Joi.number().integer().positive().required(),
-                rounding: Joi.number().allow(0, 1, 2, 3, 4, 5, 6, 7, 8).default(4)
+                rounding: Joi.number().allow(0, 1, 2, 3).default(1)
             },
             setup(params) {
                 const _this: any = this;
@@ -161,7 +169,7 @@ export const BigNumberExtension: Joi.Extension = {
             description: 'Positive value',
             validate(params, value: BigNumber, state, options) {
                 // check whether value is positive
-                if(!new BigNumber(value).isPositive()) {
+                if(!new BigNumber(value).gt(0)) {
                     return this.createError('bignumber.positive', {v: value}, state, options);
                 }
 
@@ -174,7 +182,7 @@ export const BigNumberExtension: Joi.Extension = {
             description: 'Negative value',
             validate(params, value: BigNumber, state, options) {
                 // check whether value is negative
-                if(!new BigNumber(value).isNegative()) {
+                if(!new BigNumber(value).lt(0)) {
                     return this.createError('bignumber.negative', {v: value}, state, options);
                 }
 

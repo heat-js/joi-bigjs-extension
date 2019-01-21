@@ -4,16 +4,17 @@
 
 <!-- toc -->
 
-- [BigNumber](#bignumber)
-  - [`bignumber` - inherits from `Any`](#bignumber---inherits-from-any)
-    - [`bignumber.min(limit)`](#bignumberminlimit)
-    - [`bignumber.greater(limit)`](#bignumbergreaterlimit)
-    - [`bignumber.less(limit)`](#bignumberlesslimit)
-    - [`bignumber.integer()`](#bignumberinteger)
-    - [`bignumber.precision(limit, rounding)`](#bignumberprecisionlimit-rounding)
-    - [`bignumber.multiple(base)`](#bignumbermultiplebase)
-    - [`bignumber.positive()`](#bignumberpositive)
-    - [`bignumber.negative()`](#bignumbernegative)
+- [1.1.3 API Reference](#113-api-reference)
+  - [BigNumber](#bignumber)
+    - [`bignumber` - inherits from `Any`](#bignumber---inherits-from-any)
+      - [`bignumber.min(limit)`](#bignumberminlimit)
+      - [`bignumber.greater(limit)`](#bignumbergreaterlimit)
+      - [`bignumber.less(limit)`](#bignumberlesslimit)
+      - [`bignumber.integer()`](#bignumberinteger)
+      - [`bignumber.precision(limit, rounding)`](#bignumberprecisionlimit-rounding)
+      - [`bignumber.multiple(base)`](#bignumbermultiplebase)
+      - [`bignumber.positive()`](#bignumberpositive)
+      - [`bignumber.negative()`](#bignumbernegative)
 
 <!-- tocstop -->
 
@@ -21,7 +22,7 @@
 
 ### `bignumber` - inherits from `Any`
 
-Generates a schema object that matches a BigNumber data type (as well as strings and numbers that can be converted to BigNumber). 
+Generates a schema object that matches a BigNumber data type (as well as strings and numbers that can be converted to BigNumber).
 
 If the validation `convert` option is on (enabled by default), a string or number will be converted to a `BigNumber` if specified. Also, if
 `convert` is on and `number.precision()` is used, the value will be converted to the specified `precision` as well.
