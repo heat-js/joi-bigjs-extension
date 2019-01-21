@@ -1,18 +1,15 @@
-# joi-bignumber-extension
+# joi-bigjs-extension
 
-Joi extension for BigNumber type
+Joi extension for Big.js type
 
-[![npm version](https://badge.fury.io/js/joi-bignumber-extension.svg)](http://badge.fury.io/js/joi-bignumber-extension)
-[![Build Status](https://secure.travis-ci.org/xtruder/joi-bignumber-extension.svg?branch=master)](http://travis-ci.org/xtruder/joi-bignumber-extension)
-[![Dependencies Status](https://david-dm.org/xtruder/joi-bignumber-extension.svg)](https://david-dm.org/xtruder/joi-bignumber-extension)
-[![DevDependencies Status](https://david-dm.org/xtruder/joi-bignumber-extension/dev-status.svg)](https://david-dm.org/xtruder/joi-bignumber-extension#info=devDependencies)
-[![Known Vulnerabilities](https://snyk.io/test/npm/joi-bignumber-extension/badge.svg)](https://snyk.io/test/npm/joi-bignumber-extension)
-
-Lead Maintainer: [Jaka Hudoklin](https://github.com/offlinehacker)
+[![npm version](https://badge.fury.io/js/joi-bigjs-extension.svg)](http://badge.fury.io/js/joi-bigjs-extension)
+[![Dependencies Status](https://david-dm.org/heat-js/joi-bigjs-extension.svg)](https://david-dm.org/heat-js/joi-bigjs-extension)
+[![DevDependencies Status](https://david-dm.org/heat-js/joi-bigjs-extension/dev-status.svg)](https://david-dm.org/heat-js/joi-bigjs-extension#info=devDependencies)
+[![Known Vulnerabilities](https://snyk.io/test/npm/joi-bigjs-extension/badge.svg)](https://snyk.io/test/npm/joi-bigjs-extension)
 
 ## Installation
 
-```npm install --save joi-bignumber-extension```
+```yarn add joi-bigjs-extension```
 
 ## Usage
 
@@ -20,7 +17,7 @@ Lead Maintainer: [Jaka Hudoklin](https://github.com/offlinehacker)
 
 ```javascript
 const BaseJoi = require('joi');
-const {BigNumberExtension} = require('joi-bignumber-extension');
+const {BigNumberExtension} = require('joi-bigjs-extension');
 const Joi = BaseJoi.extend(BigNumberExtension);
 
 const schema = Joi.bignumber().positive().integer().min(10).less(100);
@@ -31,7 +28,7 @@ const schema = Joi.bignumber().positive().integer().min(10).less(100);
 ```typescript
 import * as BaseJoi from 'joi';
 import {BigNumber} from 'bignumber.js';
-import {BigNumberExtension} from 'joi-bignumber-extension';
+import {BigNumberExtension} from 'joi-bigjs-extension';
 
 const Joi = BaseJoi.extend(BigNumberExtension);
 
@@ -39,7 +36,7 @@ const schema = Joi.bignumber().positive().integer().min(10).less(100);
 ```
 
 ## API
-See the [API Reference](https://github.com/heat-js/joi-bignumber-extension/blob/v1.1.3/API.md).
+See the [API Reference](https://github.com/heat-js/joi-bigjs-extension/blob/v1.1.3/API.md).
 
 ## Development
 
