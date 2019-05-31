@@ -2,6 +2,32 @@
 # yarn lockfile v1
 
 
+"@hapi/address@2.x.x":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.0.0.tgz#9f05469c88cb2fd3dcd624776b54ee95c312126a"
+  integrity sha512-mV6T0IYqb0xL1UALPFplXYQmR0twnXG0M6jUswpquqT2sD12BOiCiLy3EvMp/Fy7s3DZElC4/aPjEjo2jeZpvw==
+
+"@hapi/hoek@6.x.x":
+  version "6.2.4"
+  resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-6.2.4.tgz#4b95fbaccbfba90185690890bdf1a2fbbda10595"
+  integrity sha512-HOJ20Kc93DkDVvjwHyHawPwPkX44sIrbXazAUDiUXaY2R9JwQGo2PhFfnQtdrsIe4igjG2fPgMra7NYw7qhy0A==
+
+"@hapi/joi@^15.0.3":
+  version "15.0.3"
+  resolved "https://registry.yarnpkg.com/@hapi/joi/-/joi-15.0.3.tgz#e94568fd859e5e945126d5675e7dd218484638a7"
+  integrity sha512-z6CesJ2YBwgVCi+ci8SI8zixoj8bGFn/vZb9MBPbSyoxsS2PnWYjHcyTM17VLK6tx64YVK38SDIh10hJypB+ig==
+  dependencies:
+    "@hapi/address" "2.x.x"
+    "@hapi/hoek" "6.x.x"
+    "@hapi/topo" "3.x.x"
+
+"@hapi/topo@3.x.x":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@hapi/topo/-/topo-3.1.0.tgz#5c47cd9637c2953db185aa957a27bcb2a8b7a6f8"
+  integrity sha512-gZDI/eXOIk8kP2PkUKjWu9RW8GGVd2Hkgjxyr/S7Z+JF+0mr7bAlbw+DkTRxnD580o8Kqxlnba9wvqp5aOHBww==
+  dependencies:
+    "@hapi/hoek" "6.x.x"
+
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
@@ -31,10 +57,12 @@
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.7.tgz#1b8e33b61a8c09cbe1f85133071baa0dbf9fa71a"
   integrity sha512-2Y8uPt0/jwjhQ6EiluT0XCri1Dbplr0ZxfFXUz+ye13gaqE8u5gL5ppao1JrUYr9cIip5S6MvQzBS7Kke7U9VA==
 
-"@types/joi@^14.0.1":
-  version "14.0.1"
-  resolved "https://registry.yarnpkg.com/@types/joi/-/joi-14.0.1.tgz#739be8a8899a75631a3c9f15611e54bbab06c024"
-  integrity sha512-0uZZ+nffpr480zwwUXsk0Z5O0szllffNW1EbkI+dDzKhNKhiX4QOwpwK37WpKIpaPLk9V8U9y2We/VOeD6zyhQ==
+"@types/hapi__joi@*", "@types/hapi__joi@^15.0.1":
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/@types/hapi__joi/-/hapi__joi-15.0.1.tgz#6038375074af792b765e34dc799c83d30a406fbe"
+  integrity sha512-uqH3kTO1nrhe+Pbq+dQKrulrfscRPjFZNv9UWA3FupJZBHw+miT7yiV6C8A80YLnn0o6zbgTProncBb3d7QohA==
+  dependencies:
+    "@types/hapi__joi" "*"
 
 "@types/mocha@^5.2.5":
   version "5.2.5"

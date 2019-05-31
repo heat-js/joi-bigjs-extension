@@ -16,7 +16,7 @@ Joi extension for Big.js type
 ### JavaScript
 
 ```javascript
-const BaseJoi = require('joi');
+const BaseJoi = require('@hapi/joi');
 const {BigNumberExtension} = require('joi-bigjs-extension');
 const Joi = BaseJoi.extend(BigNumberExtension);
 
@@ -26,7 +26,7 @@ const schema = Joi.bignumber().positive().integer().min(10).less(100);
 ### Typescript
 
 ```typescript
-import * as BaseJoi from 'joi';
+import * as BaseJoi from '@hapi/joi';
 import {BigNumber} from 'bignumber.js';
 import {BigNumberExtension} from 'joi-bigjs-extension';
 

@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 
-import * as BaseJoi from 'joi';
+import * as BaseJoi from '@hapi/joi';
 import BigNumber from 'big.js';
 import {BigNumberExtension} from '../src/index';
 
