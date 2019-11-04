@@ -131,19 +131,33 @@ export const BigNumberExtension: Joi.Extension = {
             }
         },
         {
+            name: 'decimal',
+            description: 'Check decimals place',
+            params: {
+                value: Joi.number().integer().positive().required(),
+            },
+            validate(params, value: BigNumber, state, options) {
+                // Check if fixed number is exactly like the original one
+                if (value.toFixed().length > value.toFixed(params.value).length) {
+                    return this.createError('bignumber.decimal', {v: value}, state, options);
+                }
+
+                // Everything is ok
+                return value;
+            }
+        },
+        {
             name: 'precision',
             description: 'Value precision',
             params: {
                 value: Joi.number().integer().positive().required(),
-                rounding: Joi.number().allow(0, 1, 2, 3).default(0)
             },
             setup(params) {
                 const _this: any = this;
                 _this._flags.precision = params.value;
-                _this._flags.rounding = params.rounding;
             },
             validate(params, value: BigNumber, state, options) {
-                return value.round(params.value, params.rounding);
+                return value.toPrecision(params.value);
             }
         },
         {
