@@ -14,6 +14,7 @@ export const BigNumberExtension: Joi.Extension = {
         multiple: '!!"{{v}}" needs to be multiple of "{{multiplier}}"',
         positive: '!!"{{v}}" needs to be positive',
         negative: '!!"{{v}}" needs to be negative',
+        decimal: '!!"{{v}}" needs to have less than or equal to {{max}} decimal places',
     },
 
     pre(value, state, options) {
@@ -137,9 +138,11 @@ export const BigNumberExtension: Joi.Extension = {
                 value: Joi.number().integer().positive().required(),
             },
             validate(params, value: BigNumber, state, options) {
+                const max = params.value;
+
                 // Check if fixed number is exactly like the original one
-                if (value.toFixed().length > value.toFixed(params.value).length) {
-                    return this.createError('bignumber.decimal', {v: value}, state, options);
+                if (value.toFixed().length > value.toFixed(max).length) {
+                    return this.createError('bignumber.decimal', {v: value, max}, state, options);
                 }
 
                 // Everything is ok
