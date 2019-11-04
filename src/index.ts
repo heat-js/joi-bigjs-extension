@@ -135,15 +135,15 @@ export const BigNumberExtension: Joi.Extension = {
             description: 'Value precision',
             params: {
                 value: Joi.number().integer().positive().required(),
-                rounding: Joi.number().allow(0, 1, 2, 3).default(1)
+                rounding: Joi.number().allow(0, 1, 2, 3).default(0)
             },
             setup(params) {
                 const _this: any = this;
                 _this._flags.precision = params.value;
                 _this._flags.rounding = params.rounding;
             },
-            validate(params, value: Number, state, options) {
-                return value;
+            validate(params, value: BigNumber, state, options) {
+                return value.round(params.value, params.rounding);
             }
         },
         {
