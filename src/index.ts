@@ -14,7 +14,7 @@ export const BigNumberExtension: Joi.Extension = {
         multiple: '!!"{{v}}" needs to be multiple of "{{multiplier}}"',
         positive: '!!"{{v}}" needs to be positive',
         negative: '!!"{{v}}" needs to be negative',
-        decimal: '!!"{{v}}" needs to have less than or equal to {{max}} decimal places',
+        precision: '!!"{{v}}" needs to have less than or equal to {{max}} decimal places',
     },
 
     pre(value, state, options) {
@@ -30,17 +30,12 @@ export const BigNumberExtension: Joi.Extension = {
             return this.createError('bignumber.nan', { v: value }, state, options);
         }
 
-        if (_this._flags.precision) {
-            const oldRounding = BigNumber.RM;
-
-            if (_this._flags.rounding) {
-                BigNumber.RM = _this._flags.rounding;
-            }
-
-            bnValue = new BigNumber(bnValue.toPrecision(_this._flags.precision));
-
-            BigNumber.RM = oldRounding;
-        }
+        // if (_this._flags.precision) {
+        //     bnValue = bnValue.round(
+        //         _this._flags.precision,
+        //         _this._flags.rounding
+        //     );
+        // }
 
         return options.convert ? bnValue : value;
     },
@@ -132,7 +127,7 @@ export const BigNumberExtension: Joi.Extension = {
             }
         },
         {
-            name: 'decimal',
+            name: 'precision',
             description: 'Check decimals place',
             params: {
                 value: Joi.number().integer().positive().required(),
@@ -141,28 +136,45 @@ export const BigNumberExtension: Joi.Extension = {
                 const max = params.value;
 
                 // Check if fixed number is exactly like the original one
-                if (value.toFixed().length > value.toFixed(max).length) {
-                    return this.createError('bignumber.decimal', {v: value, max}, state, options);
+                if (value.toFixed() !== value.toFixed(max)) {
+                    return this.createError('bignumber.precision', {v: value, max}, state, options);
                 }
 
                 // Everything is ok
                 return value;
             }
         },
-        {
-            name: 'precision',
-            description: 'Value precision',
-            params: {
-                value: Joi.number().integer().positive().required(),
-            },
-            setup(params) {
-                const _this: any = this;
-                _this._flags.precision = params.value;
-            },
-            validate(params, value: BigNumber, state, options) {
-                return value.toPrecision(params.value);
-            }
-        },
+        // {
+        //     name: 'precision',
+        //     description: 'Value precision',
+        //     params: {
+        //         value: Joi.number().integer().positive().required(),
+        //         rounding: Joi.number().allow(0, 1, 2, 3).default(0)
+        //     },
+        //     setup(params) {
+        //         const _this: any = this;
+        //         _this._flags.precision = params.value;
+        //         _this._flags.rounding = params.rounding;
+        //     },
+        //     validate(params, value: BigNumber, state, options) {
+        //         if (value.toFixed() !== value.toFixed(params.value)) {
+        //             return this.createError('bignumber.precision', {
+        //                 v: value,
+        //                 precision: params.value
+        //             }, state, options);
+        //         }
+
+        //         return value;
+
+        //         // 0
+        //         // 1.000000000000001
+        //         // const right = value.round(params.value, params.rounding);
+        //         // if ( right.eq(value) ) {
+        //         //     return this.createError('bignumber.decimal', {v: value, max}, state, options);
+        //         // }
+        //         // return value;
+        //     }
+        // },
         {
             name: 'multiple',
             description: 'Multiple of value',
