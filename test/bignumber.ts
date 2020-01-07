@@ -156,35 +156,35 @@ describe('big', () => {
         });
     });
 
-    describe('decimal', () => {
-        it('should validate 2 decimal places', () => {
-            const bnValidator = Joi.bignumber().decimal(2);
+    // describe('decimal', () => {
+    //     it('should validate 2 decimal places', () => {
+    //         const bnValidator = Joi.bignumber().decimal(2);
 
-            const result = bnValidator.validate('100.00');
+    //         const result = bnValidator.validate('100.00');
 
-            expect(result.error).to.be.null;
-        });
+    //         expect(result.error).to.be.null;
+    //     });
 
-        it('should return validation error if value has excatly the amount of decimal places', () => {
-            const bnValidator = Joi.bignumber().decimal(2);
+    //     it('should return validation error if value has excatly the amount of decimal places', () => {
+    //         const bnValidator = Joi.bignumber().decimal(2);
 
-            const result = bnValidator.validate('100.111');
+    //         const result = bnValidator.validate('100.111');
 
-            expect(result.error).to.not.be.null;
-            expect(result.error.name).to.be.equal('ValidationError');
-        });
-    });
+    //         expect(result.error).to.not.be.null;
+    //         expect(result.error.name).to.be.equal('ValidationError');
+    //     });
+    // });
 
-    describe('precision', () => {
-        it('should round to precision', () => {
-            const bnValidator = Joi.bignumber().precision(5);
+    // describe('precision', () => {
+    //     it('should round to precision', () => {
+    //         const bnValidator = Joi.bignumber().precision(5);
 
-            const result = bnValidator.validate('100.111');
+    //         const result = bnValidator.validate('100.111');
 
-            expect(result.error).to.be.null;
-            expect(result.value.toString()).to.be.equal('100.11')
-        });
-    });
+    //         expect(result.error).to.be.null;
+    //         expect(result.value.toString()).to.be.equal('100.11')
+    //     });
+    // });
 
     describe('multiple', () => {
         it('should be multiple of value', () => {
