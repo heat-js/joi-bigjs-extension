@@ -136,7 +136,7 @@ export const BigNumberExtension: Joi.Extension = {
                 const max = params.value;
 
                 // Check if fixed number is exactly like the original one
-                if (value.toFixed() !== value.toFixed(max)) {
+                if (!value.eq(value.round(max, 0))) {
                     return this.createError('bignumber.precision', {v: value, max}, state, options);
                 }
 
