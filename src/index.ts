@@ -134,6 +134,7 @@ export const BigNumberExtension: Joi.Extension = {
             },
             validate(params, value: BigNumber, state, options) {
                 const max = params.value;
+                value = new BigNumber(value);
 
                 // Check if fixed number is exactly like the original one
                 if (!value.eq(value.round(max, 0))) {
