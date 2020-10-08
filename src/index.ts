@@ -20,7 +20,7 @@ export const BigNumberExtension: Joi.Extension = {
     pre(value, state, options) {
         const _this: any = this;
 
-        if (!value) {
+        if (typeof value === 'undefined') {
             return value;
         }
 
