@@ -134,10 +134,10 @@ export const BigNumberExtension: Joi.Extension = {
             },
             validate(params, value: BigNumber, state, options) {
                 const max = params.value;
-                value = new BigNumber(value);
+                const bnValue = new BigNumber(value);
 
                 // Check if fixed number is exactly like the original one
-                if (!value.eq(value.round(max, 0))) {
+                if (!bnValue.eq(bnValue.round(max, 0))) {
                     return this.createError('bignumber.precision', {v: value, max}, state, options);
                 }
 
